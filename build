@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Simple function to print with colors
+c_echo(){
+    RED="\033[0;31m"
+    GREEN='\033[0;32m'
+    YELLOW='\033[1;33m'
+    NC='\033[0m'
+
+    printf "${!1}${2} ${NC}\n"
+}
+
+CURR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Make sure we start from the build script location
+cd ${CURR_DIR}
+
+# Source environnement
+source ${CURR_DIR}/sources/poky/oe-init-build-env ${CURR_DIR}/output
