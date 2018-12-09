@@ -20,4 +20,4 @@ source ${CURR_DIR}/sources/poky/oe-init-build-env ${CURR_DIR}/output
 
 # Build the image
 cd ${CURR_DIR}/output
-bitbake console-image
+bitbake blackmagic-image
