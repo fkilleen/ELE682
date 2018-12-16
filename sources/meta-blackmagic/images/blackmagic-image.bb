@@ -7,6 +7,7 @@ IMAGE_INSTALL += " \
             phytool \
             mmc-utils \
             iproute2 \
+            wf111-driver \
 "
 
 export IMAGE_BASENAME = "blackmagic-image"
