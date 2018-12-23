@@ -1,0 +1,64 @@
+From 62e993ab66194a42c6c07e8d7f6a261db7f52572 Mon Sep 17 00:00:00 2001
+From: Francois Killeen <killeenfrancois@gmail.com>
+Date: Sun, 23 Dec 2018 14:40:55 -0500
+Subject: [PATCH] Empty EEPROM Fix
+
+---
+ board/ti/am335x/board.h      | 3 ++-
+ board/ti/am335x/mux.c        | 2 +-
+ include/configs/am335x_evm.h | 1 +
+ include/environment/ti/mmc.h | 2 +-
+ 4 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/board/ti/am335x/board.h b/board/ti/am335x/board.h
+index 652b10b5e4..88c7e3b2fe 100644
+--- a/board/ti/am335x/board.h
++++ b/board/ti/am335x/board.h
+@@ -35,7 +35,8 @@ static inline int board_is_bone_lt(void)
+ 
+ static inline int board_is_pb(void)
+ {
+-	return board_ti_is("A335PBGL");
++	//return board_ti_is("A335PBGL");
++	return 1;
+ }
+ 
+ static inline int board_is_bbg1(void)
+diff --git a/board/ti/am335x/mux.c b/board/ti/am335x/mux.c
+index aa187605d0..82546a87b1 100644
+--- a/board/ti/am335x/mux.c
++++ b/board/ti/am335x/mux.c
+@@ -392,7 +392,7 @@ void enable_board_pin_mux(void)
+ #endif
+ 	} else if (board_is_pb()) {
+ 		configure_module_pin_mux(mii1_pin_mux);
+-		configure_module_pin_mux(mmc0_pin_mux);
++		configure_module_pin_mux(mmc1_pin_mux);
+ 	} else if (board_is_icev2()) {
+ 		configure_module_pin_mux(mmc0_pin_mux);
+ 		configure_module_pin_mux(gpio0_18_pin_mux);
+diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
+index ff87adcd49..2667a65356 100644
+--- a/include/configs/am335x_evm.h
++++ b/include/configs/am335x_evm.h
+@@ -100,6 +100,7 @@
+ #include <environment/ti/mmc.h>
+ 
+ #define CONFIG_EXTRA_ENV_SETTINGS \
++	"echo Booting Black Magic Board;\0" \
+ 	DEFAULT_LINUX_BOOT_ENV \
+ 	DEFAULT_MMC_TI_ARGS \
+ 	DEFAULT_FIT_TI_ARGS \
+diff --git a/include/environment/ti/mmc.h b/include/environment/ti/mmc.h
+index 785fc15345..62679438d8 100644
+--- a/include/environment/ti/mmc.h
++++ b/include/environment/ti/mmc.h
+@@ -9,7 +9,7 @@
+ #define __TI_MMC_H
+ 
+ #define DEFAULT_MMC_TI_ARGS \
+-	"mmcdev=0\0" \
++	"mmcdev=1\0" \
+ 	"mmcrootfstype=ext4 rootwait\0" \
+ 	"finduuid=part uuid mmc ${bootpart} uuid\0" \
+ 	"args_mmc=run finduuid;setenv bootargs console=${console} " \
