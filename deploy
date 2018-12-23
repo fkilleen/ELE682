@@ -1,0 +1,39 @@
+#!/bin/bash
+
+CURR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Simple function to print with colors
+c_echo(){
+    RED="\033[0;31m"
+    GREEN='\033[0;32m'
+    YELLOW='\033[1;33m'
+    NC='\033[0m'
+
+    printf "${!1}${2} ${NC}\n"
+}
+
+# Make sure we start from the build script location
+cd ${CURR_DIR}
+
+# Execute the commands with sudo if we are not root
+SUDO=''
+if (( $EUID != 0 )); then
+    SUDO='sudo'
+fi
+
+if [ -z "$1" ]
+then
+    c_echo "RED" "Please specify a device (i.g /dev/sdb) "
+    exit 1
+fi
+
+export 
+
+c_echo "YELLOW" "Partitioning sdcard"
+$SUDO OETMP=${CURR_DIR}/output/tmp ${CURR_DIR}/sources/meta-bbb/scripts/mk2parts.sh $1
+
+c_echo "YELLOW" "Deploying the bootloader, MLO and uEnv.txt"
+$SUDO OETMP=${CURR_DIR}/output/tmp ${CURR_DIR}/sources/meta-bbb/scripts/copy_boot.sh $1
+
+c_echo "YELLOW" "Deploying the rootfs"
+$SUDO OETMP=${CURR_DIR}/output/tmp ${CURR_DIR}/sources/meta-bbb/scripts/copy_rootfs.sh $1 blackmagic
