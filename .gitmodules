@@ -7,3 +7,6 @@
 [submodule "sources/meta-openembedded"]
 	path = sources/meta-openembedded
 	url = git://git.openembedded.org/meta-openembedded
+[submodule "sources/meta-qt5"]
+	path = sources/meta-qt5
+	url = https://github.com/meta-qt5/meta-qt5.git

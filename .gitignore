@@ -1,0 +1,7 @@
+output/bitbake-cookerdaemon.log
+output/bitbake.lock
+output/cache/
+output/conf/sanity_info
+output/downloads/
+output/sstate-cache/
+output/tmp/

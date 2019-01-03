@@ -1,0 +1,8 @@
+#!/bin/bash
+CURR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Make sure we start from the build script location
+cd ${CURR_DIR}
+
+# Source environement
+source ${CURR_DIR}/sources/poky/oe-init-build-env ${CURR_DIR}/output
