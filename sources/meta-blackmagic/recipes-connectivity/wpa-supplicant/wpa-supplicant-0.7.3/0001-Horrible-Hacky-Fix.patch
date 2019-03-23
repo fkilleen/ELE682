@@ -1,0 +1,21 @@
+From 76387c82585496868150d9e7c8d9ef01049c5702 Mon Sep 17 00:00:00 2001
+From: Francois Killeen <killeenfrancois@gmail.com>
+Date: Sat, 23 Mar 2019 16:06:16 -0400
+Subject: [PATCH] Horrible Hacky Fix
+
+---
+ wpa_supplicant/Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/wpa_supplicant/Makefile b/wpa_supplicant/Makefile
+index 725a7e9..985cfcc 100644
+--- a/wpa_supplicant/Makefile
++++ b/wpa_supplicant/Makefile
+@@ -11,6 +11,7 @@ export BINDIR ?= /usr/local/sbin/
+ 
+ CFLAGS += -I../src
+ CFLAGS += -I../src/utils
++CFLAGS += -I../../recipe-sysroot/usr/include/libnl3/
+ 
+ ALL=wpa_supplicant wpa_passphrase wpa_cli
+ 

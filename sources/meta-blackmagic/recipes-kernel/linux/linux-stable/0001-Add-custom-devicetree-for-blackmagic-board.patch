@@ -15,7 +15,7 @@ new file mode 100644
 index 000000000000..229c023170e3
 --- /dev/null
 +++ b/arch/arm/boot/dts/am335x-osd3358-blackmagic.dts
-@@ -0,0 +1,449 @@
+@@ -0,0 +1,450 @@
 +/dts-v1/;
 +
 +#include "am33xx.dtsi"
@@ -459,6 +459,7 @@ index 000000000000..229c023170e3
 +	pinctrl-names = "default";
 +	pinctrl-0 = <&mmc1_pins>;
 +	cd-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
++       max-frequency = <1000000>;
 +};
 +
 +&rtc {

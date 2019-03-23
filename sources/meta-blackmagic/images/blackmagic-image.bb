@@ -8,6 +8,8 @@ IMAGE_INSTALL += " \
             mmc-utils \
             iproute2 \
             wf111-driver \
+	    wireless-tools \
+	    libnl \
 "
 
 export IMAGE_BASENAME = "blackmagic-image"
