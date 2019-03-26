@@ -459,7 +459,7 @@ index 000000000000..229c023170e3
 +	pinctrl-names = "default";
 +	pinctrl-0 = <&mmc1_pins>;
 +	cd-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;
-+       max-frequency = <1000000>;
++       max-frequency = <30000000>;
 +};
 +
 +&rtc {
